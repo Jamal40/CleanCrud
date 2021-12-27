@@ -9,10 +9,14 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services.AddDbContext<BookContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("BooksDb")));
+builder.Services.AddDbContext<HospitalContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DoctorsDb")));
 
-builder.Services.AddScoped<IBooksRepository, BooksRepository>();
+builder.Services.AddScoped<IDoctorsRepository, DoctorsRepository>();
+builder.Services.AddScoped<IHospitalUnitOfWork, HospitalUnitOfWork>();
+
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

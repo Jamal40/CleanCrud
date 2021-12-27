@@ -2,9 +2,9 @@
 
 public class GenericRepo<T> : IGenericRepo<T> where T : class
 {
-    private readonly BookContext context;
+    private readonly HospitalContext context;
 
-    public GenericRepo(BookContext injectedContext)
+    public GenericRepo(HospitalContext injectedContext)
     {
         context = injectedContext;
     }
